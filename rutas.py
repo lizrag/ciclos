@@ -26,3 +26,6 @@ def format_route(ruta):
     ruta_ext = ruta.split('\\')[:-1]
     ruta_ext = '\\'.join(ruta_ext)
     return ruta_ext
+
+
+#print("Starting")

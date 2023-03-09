@@ -9,3 +9,6 @@ def sync_data(origin, dest):
     except Exception as e:
         print(f"Failed to copy: {e}")
         logging.error("Error syncing directories:")
+
+
+#print("Starting")
