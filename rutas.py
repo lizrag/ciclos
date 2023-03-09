@@ -1,8 +1,16 @@
 import os
 
-ruta_principal = "C:/Users/laura/OneDrive/Documents/prueba/"
-def obtener_rutas_de_carpetas(ruta):
-    rutas = [os.path.join(ruta, carpeta) for carpeta in os.listdir(ruta) if os.path.isdir(os.path.join(ruta,carpeta))]
+# ruta_principal = "C:/Users/marco/OneDrive/Escritorio/NodeJS/"
+def obtener_rutas_de_carpetas(ruta, nombre=None):
+    rutas = [
+        os.path.join(ruta, carpeta) 
+        for carpeta in os.listdir(ruta) 
+        if (
+            os.path.isdir(os.path.join(ruta, carpeta)) 
+            and (nombre is None or nombre in carpeta)
+        )
+    ]
+        
     nombres = [os.path.join(carpeta) for carpeta in os.listdir(ruta) if os.path.isdir(os.path.join(ruta, carpeta))]
     return rutas, nombres
 
@@ -23,9 +31,19 @@ def routes_metadata(rutas, nombres):
 
 
 def format_route(ruta):
-    ruta_ext = ruta.split('\\')[:-1]
-    ruta_ext = '\\'.join(ruta_ext)
-    return ruta_ext
+    new_route = ruta.split('\\')[:-1]
+    new_route = '\\'.join(new_route)
+
+    return new_route
 
 
-#print("Starting")
+def get_files(ruta):
+    # extension = ('.VAR', '.FIL', '.TDR')
+    extension = ('.txt', '.docx')
+    files = os.listdir(ruta)
+    txt_files = [file for file in files if file.endswith(extension)]
+
+    return txt_files
+
+
+# print(get_files('C:/Users/marco/OneDrive/Escritorio/NodeJS/server_a'))

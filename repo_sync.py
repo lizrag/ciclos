@@ -3,7 +3,8 @@ import logging
 
 def sync_data(origin, dest):
     try:
-        shutil.copy2(origin, dest)
+        shutil.copy(origin, dest)
+        # shutil.move(origin, dest, copy_function = shutil.copy)
         logging.info("Sync successful!")
         print("Copied successfully")
     except Exception as e:
